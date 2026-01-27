@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      alert("Enter Array Values as Comma Separated Values");
+
+      var input;
+      var arr;
+
+      do {
+        input = prompt("Please enter array values:");
+
+        if (input.trim() === "") {
+          alert("You must enter values");
+          continue;
+        }
+
+        arr = input.split(",").map(Number);
+
+        if (arr.some(isNaN)) {
+          alert("Please enter only numbers separated by commas");
+          continue;
+        }
+
+        break;
+      } while (true);
+
+      if (arr) {
+        for (var i = 0; i < arr.length; i++) {
+          document.write("Element " + i + " : " + arr[i] + "<br>");
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

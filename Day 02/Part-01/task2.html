@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      style="margin-top: 20px; padding: 10px; font-size: 16px"
+      type="button"
+      value="Get Random Number"
+      onclick="getRandomNumber()"
+    />
+
+    <script>
+      function getRandomNumber() {
+        var getRandomNumber = Math.floor(Math.random() * 10);
+        document.write("<br> <h1>Random Number: " + getRandomNumber + "</h1>");
+      }
+    </script>
+  </body>
+</html>

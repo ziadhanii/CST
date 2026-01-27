@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var arr = ["ahmed", "ali", "moustafa", "ibraheem", "alaa", "hamada"];
+
+      function getRandomName() {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      var name1 = getRandomName();
+      var name2;
+
+      do {
+        name2 = getRandomName();
+      } while (name1 === name2);
+
+      document.write("<h1>Random Name 1: " + name1 + "</h1>");
+      document.write("<h1>Random Name 2: " + name2 + "</h1>");
+    </script>
+  </head>
+  <body></body>
+</html>

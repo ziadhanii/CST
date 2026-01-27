@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form onsubmit="return handleSubmit();">
+      <label for="UserName">Enter Your Name</label>
+      <input type="text" id="UserName" placeholder="ex:Ziad" />
+      <br />
+      <br />
+      <br />
+      <label for="Age">Enter Your Age</label>
+      <input type="number" id="Age" placeholder="20" min="12" max="70" />
+      <br />
+      <br />
+      <br />
+
+      <h3>select your gender:</h3>
+      <label for="genderMale"></label>
+      <input type="radio" name="gender" id="genderMale" value="male" checked />
+      <label for="genderMale">
+        <img src="male.png" alt="male" />
+      </label>
+
+      <input type="radio" name="gender" id="genderFemale" value="female" />
+      <label for="genderFemale">
+        <img src="female.png" alt="female" />
+      </label>
+      <br />
+      <br />
+      <br />
+
+      <label for="color">select your favorite color</label>
+      <select name="color" id="color">
+        <option value="red" selected>red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+      </select>
+      <br />
+      <br />
+      <br />
+
+      <input type="submit" name="register" value="register" id="register" />
+      <br />
+      <br />
+      <div id="errors" style="color: red"></div>
+    </form>
+
+    <script>
+      function handleSubmit() {
+        var name = document.getElementById("UserName").value.trim();
+        var age = document.getElementById("Age").value;
+        var color = document.getElementById("color").value;
+        var errors = document.getElementById("errors");
+
+        errors.innerHTML = "";
+
+        if (!name) {
+          errors.innerHTML = "Name is required";
+          return false;
+        }
+
+        if (name.length < 3) {
+          errors.innerHTML = "Name must be at least 3 characters";
+          return false;
+        }
+
+        if (!isNaN(name)) {
+          errors.innerHTML = "Name must be a valid string";
+          return false;
+        }
+
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+
+        if (!age) {
+          errors.innerHTML = "Age is required";
+          return false;
+        }
+
+        if (!age || age < 12 || age > 70) {
+          errors.innerHTML = "Age must be between 12 and 70";
+          return false;
+        }
+
+        var gender = document.querySelector(
+          'input[name="gender"]:checked',
+        ).value;
+
+        var image = gender === "male" ? "male.png" : "female.png";
+
+        openChildWindow(name, image, color);
+
+        return false;
+      }
+
+      function openChildWindow(name, image, color) {
+        var child = window.open("welcome.html", "", "width=800,height=400");
+
+        setTimeout(function () {
+          var span = child.document.querySelector("span");
+          var img = child.document.querySelector("img");
+
+          if (span) {
+            span.style.color = color;
+            span.textContent = name;
+          }
+
+          if (img) {
+            img.src = image;
+          }
+        }, 500);
+      }
+    </script>
+  </body>
+</html>

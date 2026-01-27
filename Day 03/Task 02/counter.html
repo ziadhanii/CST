@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>counter</title>
+  </head>
+
+  <body>
+    <script>
+      document.body.style.backgroundColor = "lightgray";
+      var count = 10;
+      var colors = [
+        "red",
+        "green",
+        "cean",
+        "yellow",
+        "aliceblue",
+        "aqua",
+        "bisque",
+        "blue",
+        "blueviolet",
+        "brown",
+        "cadetblue",
+      ];
+
+      var timer = setInterval(function () {
+        document.body.innerHTML = "";
+        document.body.style.backgroundColor = colors[count];
+
+        document.writeln(
+          "<h1 style='text-align:center;color:black;font-size:80px;'>" +
+            count +
+            "</h1>",
+        );
+
+        if (count == 0) {
+          clearInterval(timer);
+          setTimeout(function () {
+            window.close();
+          }, 1000);
+        }
+
+        count--;
+      }, 1000);
+    </script>
+  </body>
+</html>

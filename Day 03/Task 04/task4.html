@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Typing Message</title>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>Typing a Message</h2>
+
+      <textarea
+        name="msgInput"
+        id="msgInput"
+        placeholder="Type something..."
+      ></textarea>
+
+      <button onclick="openChildWindow()">Show Message</button>
+    </div>
+
+    <script>
+      var input = document.getElementById("msgInput");
+
+      var childWindow = null;
+      var intervalId = null;
+
+      function openChildWindow() {
+        var message = input.value.trim();
+
+        if (!message) {
+          alert("Please enter a message.");
+          return;
+        }
+
+        if (!childWindow || childWindow.closed) {
+          childWindow = window.open(
+            "child.html",
+            "ChildWindow",
+            "width=400,height=200",
+          );
+        }
+
+        childWindow.onload = function () {
+          var output = childWindow.document.getElementById("output");
+
+          output.textContent = "";
+
+          var i = 0;
+
+          clearInterval(intervalId);
+
+          intervalId = setInterval(function () {
+            output.textContent += message[i];
+            i++;
+
+            if (i >= message.length) {
+              clearInterval(intervalId);
+              childWindow.close();
+            }
+          }, 80);
+        };
+
+        childWindow.focus();
+      }
+    </script>
+  </body>
+</html>

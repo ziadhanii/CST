@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function toPascalCase(str) {
+        return str
+          .split(" ")
+          .map(function (word) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          })
+          .join(" ");
+      }
+      var input = prompt("Enter a string:");
+      var result = toPascalCase(input);
+      document.write("<h1>" + result + "</h1>");
+    </script>
+  </head>
+  <body></body>
+</html>

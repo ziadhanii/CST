@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO ORGANIZER</title>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>TO DO ORGANIZER</h2>
+
+      <div class="input-group">
+        <input type="text" id="Input" placeholder="Enter task" />
+        <button id="addBtn">Add</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Done</th>
+            <th>Task</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="taskBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      var addBtn = document.getElementById("addBtn");
+      var Input = document.getElementById("Input");
+      var tbody = document.getElementById("taskBody");
+
+      addBtn.addEventListener("click", function () {
+        var tr = document.createElement("tr");
+
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        td1.appendChild(checkbox);
+
+        td2.innerText = Input.value;
+
+        var deleteBtn = document.createElement("button");
+
+        deleteBtn.innerText = "Delete";
+
+        td3.appendChild(deleteBtn);
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+
+        tbody.appendChild(tr);
+        Input.value = "";
+      });
+
+      tbody.addEventListener("change", function (e) {
+        if (e.target.type === "checkbox") {
+          var taskTd = e.target.parentElement.nextElementSibling;
+
+          taskTd.classList.toggle("done");
+        }
+      });
+
+      tbody.addEventListener("click", function (e) {
+        if (e.target.nodeName === "BUTTON") {
+          e.target.parentElement.parentElement.remove();
+        }
+      });
+    </script>
+  </body>
+</html>

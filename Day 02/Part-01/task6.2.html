@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do {
+        var count = +prompt("Enter number of values:");
+      } while (isNaN(count) || count <= 0);
+
+      var arr = [];
+      var repeatedRows = [];
+
+      for (var i = 0; i < count; i++) {
+        do {
+          var value = prompt("Enter value for row " + (i + 1) + ":");
+        } while (value === null || value.trim() === "" || isNaN(value));
+        arr.push(value);
+      }
+
+      var choiceArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+      do {
+        var choice = prompt(
+          "Choose an operation:\n a) Display all values\n b) Sort values in ascending order\n c) Sort values in descending order\n d) Reverse the array\n e) Display even numbers\n f) Display numbers divisible by a given number\n g) Apply a 30% discount to all values\n h) Concatenate values with ' *** ' separator\n",
+        );
+      } while (!choiceArr.includes(choice));
+
+      switch (choice) {
+        case "a":
+          alert(arr);
+          break;
+
+        case "b":
+          arr.sort(function (a, b) {
+            return a - b;
+          });
+          alert(arr);
+          break;
+
+        case "c":
+          arr.sort(function (a, b) {
+            return b - a;
+          });
+          alert(arr);
+          break;
+
+        case "d":
+          arr.reverse();
+          alert(arr);
+          break;
+
+        case "e":
+          var evenCount = 0;
+          for (var i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+              evenCount++;
+            }
+          }
+          if (evenCount > 0) {
+            alert(
+              arr.filter(function (value) {
+                return value % 2 === 0;
+              }),
+            );
+          } else {
+            alert("There are no even numbers in the array.");
+          }
+          break;
+
+        case "f":
+          var divisor = +prompt("Enter a number to divide by:");
+          var divisibleCount = 0;
+          for (var i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor === 0) {
+              divisibleCount++;
+            }
+          }
+          if (divisibleCount > 0) {
+            alert(
+              arr.filter(function (value) {
+                return value % divisor === 0;
+              }),
+            );
+          }
+          break;
+
+        case "g":
+          var discount = 0.3;
+          for (var i = 0; i < arr.length; i++) {
+            arr[i] = arr[i] * (1 - discount);
+          }
+          alert(arr);
+          break;
+
+        case "h":
+          var str = "";
+          for (var i = 0; i < arr.length; i++) {
+            str += arr[i] + " *** ";
+          }
+          alert(str);
+          break;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

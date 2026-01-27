@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>News Table</title>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>News Manager</h2>
+
+      <div class="input-group">
+        <input type="text" id="newsInput" placeholder="Enter news" />
+        <button id="addBtn">Add</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>News</th>
+          </tr>
+        </thead>
+        <tbody id="newsBody"></tbody>
+      </table>
+
+      <button id="countRowsBtn">Count Rows</button>
+
+      <p id="rowCount"></p>
+    </div>
+
+    <script>
+      var addBtn = document.getElementById("addBtn");
+      var newsInput = document.getElementById("newsInput");
+      var tbody = document.getElementById("newsBody");
+
+      addBtn.addEventListener("click", function () {
+        if (!newsInput.value.trim()) return;
+
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cell2 = document.createElement("td");
+
+        cell1.innerText = tbody.rows.length + 1;
+
+        cell2.innerText = newsInput.value;
+
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        tbody.appendChild(row);
+
+        newsInput.value = "";
+      });
+
+      document
+        .getElementById("countRowsBtn")
+        .addEventListener("click", function () {
+          document.getElementById("rowCount").innerText =
+            "Total Rows: " + tbody.rows.length;
+        });
+    </script>
+  </body>
+</html>

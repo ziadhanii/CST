@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var name;
+      do {
+        name = prompt("Enter your name:");
+      } while (name === null || name.trim() === "" || !isNaN(name));
+
+      var mobileNumber;
+      do {
+        mobileNumber = prompt("Enter your mobile number:");
+      } while (
+        isNaN(mobileNumber) ||
+        mobileNumber.length !== 11 ||
+        !["010", "011", "012", "015"].includes(mobileNumber.substring(0, 3))
+      );
+
+      alert("Name: " + name);
+      alert("Mobile Number: " + mobileNumber);
+    </script>
+    <!-- 
+    <script>
+      var name;
+      var phoneNumber;
+
+      do {
+        name = prompt("enter your name as a string only: ");
+      } while (ValidateStr(name));
+
+      do {
+        phoneNumber = prompt("enter your phoneNumber as a string either: ");
+      } while (ValidatePhone(phoneNumber));
+
+      alert("welecome " + name + " we will call you on " + phoneNumber);
+
+      function ValidateStr(str) {
+        if (typeof str !== "string" || str.trim() === "") return true;
+        return !/^[A-Za-z]+$/.test(str);
+      }
+
+      function ValidatePhone(phone) {
+        if (phone.length !== 11) return true;
+        if (!/^\d{11}$/.test(phone)) return true;
+        var validNumbers = ["011", "012", "010", "015"];
+        var prefix = phone.substring(0, 3);
+        if (!validNumbers.includes(prefix)) return true;
+        return false;
+      }
+    </script> -->
+  </head>
+  <body></body>
+</html>

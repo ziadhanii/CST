@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var TwoDArray = [];
+      for (var i = 0; i < 2; i++) {
+        TwoDArray[i] = [];
+        for (var j = 0; j < 3; j++) {
+          TwoDArray[i][j] = Number(
+            prompt("Enter value for TwoDArray[" + i + "][" + j + "] : "),
+          );
+        }
+      }
+      console.log("Your 2D Array is : ");
+      console.log(TwoDArray);
+      var result = TwoDArray.map(function (row) {
+        return row.reduce(function (total, num) {
+          return total + Number(num);
+        }, 0);
+      });
+      console.log("Sum of each row is : " + result);
+
+      document.write(
+        "<table border='1' style='border-collapse: collapse; margin-top: 20px;'>",
+      );
+      document.write("<tr>");
+      for (var j = 0; j < 3; j++) {
+        document.write("<th>Col " + j + "</th>");
+      }
+      document.write("<th>Sum</th>");
+      document.write("</tr>");
+
+      for (var i = 0; i < 2; i++) {
+        var rowColor = i % 2 == 0 ? "lightyellow" : "lightpink";
+        var sum = 0;
+        document.write("<tr bgcolor='" + rowColor + "'>");
+        for (var j = 0; j < 3; j++) {
+          document.write("<td>" + TwoDArray[i][j] + "</td>");
+          sum += TwoDArray[i][j];
+        }
+        document.write("<td>" + sum + "</td>");
+        document.write("</tr>");
+      }
+
+      document.write("</table>");
+    </script>
+  </head>
+  <body></body>
+</html>

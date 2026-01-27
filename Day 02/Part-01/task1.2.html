@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do {
+        var count = +prompt("Enter number of values:");
+      } while (isNaN(count) || count <= 0);
+
+      var arr = [];
+      var repeatedRows = [];
+
+      for (var i = 0; i < count; i++) {
+        do {
+          var value = prompt("Enter value for row " + (i + 1) + ":");
+        } while (value === null || value.trim() === "" || isNaN(value));
+        arr.push(value);
+      }
+
+      for (var i = 0; i < arr.length; i++) {
+        document.write(
+          " <table style='border: 5px solid red'><tr><td>" +
+            arr[i] +
+            "</td></tr></table>",
+        );
+        for (var j = 0; j < i; j++) {
+          if (arr[i] === arr[j]) {
+            repeatedRows.push(i + 1);
+            break;
+          }
+        }
+      }
+
+      if (repeatedRows.length > 0) {
+        for (var i = 0; i < repeatedRows.length; i++) {
+          document.write(
+            "Repeated value: " + arr[repeatedRows[i] - 1] + "<br>",
+          );
+          document.write("Repeated row number " + repeatedRows[i] + "<br>");
+        }
+        alert("There are repeated values in the array.");
+      } else {
+        alert("All values are unique in the array.");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

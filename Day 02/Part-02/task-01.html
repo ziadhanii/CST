@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p id="counter"></p>
+    <button onclick="reduce()">reduce</button>
+
+    <script>
+      var img = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
+
+      var counterEl = document.getElementById("counter");
+
+      var counter = 10;
+
+      counterEl.innerHTML = counter;
+
+      document.body.style.backgroundImage = "url(1.jpg)";
+
+      function reduce() {
+        counter--;
+
+        if (counter === 0) window.close();
+
+        counterEl.innerHTML = counter;
+
+        var random = Math.floor(Math.random() * img.length);
+
+        console.log(random);
+
+        document.body.style.backgroundImage = `url(${img[random]})`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <title>Bottle Game</title>
+    <style>
+      body {
+        text-align: center;
+      }
+
+      h2 {
+        color: #2196f3;
+      }
+
+      input {
+        width: 350px;
+        padding: 8px;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 8px 20px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .box {
+        margin: 15px auto;
+        width: 400px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      .output {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Bottle Game</h2>
+    <div>* * *</div>
+    <img src="5.png" alt="" />
+    <p>
+      Write a function that takes an array of persons' names and returns two
+      random names
+    </p>
+
+    <div class="box">
+      <b>Input</b><br /><br />
+      <input
+        type="text"
+        id="namesInput"
+        value='["ziad","sara","mona","youssef","laila" ,"omar"]'
+      />
+      <br />
+      <button onclick="playGame()">Play</button>
+    </div>
+
+    <div class="box">
+      <b>Output</b>
+      <div class="output" id="result"></div>
+    </div>
+
+    <script>
+      function playGame() {
+        var text = document.getElementById("namesInput").value;
+        var names = JSON.parse(text);
+
+        var index1 = Math.floor(Math.random() * names.length);
+        var index2;
+
+        do {
+          index2 = Math.floor(Math.random() * names.length);
+        } while (index1 === index2);
+
+        var output = [names[index1], names[index2]];
+
+        document.getElementById("result").innerHTML =
+          '["' + output[0] + '", "' + output[1] + '"]';
+      }
+    </script>
+  </body>
+</html>

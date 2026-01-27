@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slide Show Game</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #e5ccff, #8400ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 550px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #6b21a8;
+      }
+
+      img {
+        width: 500px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        transition: opacity 0.3s ease;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px 22px;
+        border: none;
+        border-radius: 20px;
+        background-color: #a855f7;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+
+      button:hover:not(:disabled) {
+        transform: translateY(-2px);
+        background-color: #9333ea;
+      }
+
+      button:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>Slide Show Game</h2>
+
+      <img id="slideImage" src="1.jpg" />
+
+      <div class="controls">
+        <button id="startBtn" onclick="startSlideshow()">Start</button>
+        <button id="prevBtn" onclick="previousImage()">Previous</button>
+        <button id="nextBtn" onclick="nextImage()">Next</button>
+        <button id="stopBtn" onclick="stopSlideshow()">Stop</button>
+      </div>
+    </div>
+
+    <script>
+      var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"];
+
+      var currentIndex = 0;
+      var isPlaying = false;
+      var intervalId = null;
+
+      var slideImage = document.getElementById("slideImage");
+
+      var startBtn = document.getElementById("startBtn");
+      var nextBtn = document.getElementById("nextBtn");
+      var prevBtn = document.getElementById("prevBtn");
+      var stopBtn = document.getElementById("stopBtn");
+
+      function showImage(index) {
+        setTimeout(function () {
+          slideImage.src = images[index];
+        }, 150);
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      }
+
+      function previousImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      }
+
+      function updateButtons() {
+        stopBtn.disabled = !isPlaying;
+        startBtn.disabled = isPlaying;
+        nextBtn.disabled = isPlaying;
+        prevBtn.disabled = isPlaying;
+      }
+
+      function startSlideshow() {
+        if (isPlaying) return;
+
+        isPlaying = true;
+        intervalId = setInterval(nextImage, 1000);
+
+        updateButtons();
+      }
+
+      function stopSlideshow() {
+        clearInterval(intervalId);
+        intervalId = null;
+
+        isPlaying = false;
+
+        updateButtons();
+      }
+
+      updateButtons();
+      showImage(currentIndex);
+    </script>
+  </body>
+</html>
