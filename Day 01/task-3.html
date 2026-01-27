@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    alert(
+      "You have 3 images . Enter Name of One Image to Show it (image1-image2-image3)",
+    );
+    var imgChoice = "image1";
+    var imageBorderPixels = 5;
+    var imageBorderColor = "red";
+    var imageBorderStyle = "solid";
+
+    do {
+      imgChoice = prompt("Enter image name (without extension): ");
+    } while (imgChoice === "" || imgChoice === null);
+
+    var validImages = ["image1", "image2", "image3"];
+
+    while (!validImages.includes(imgChoice)) {
+      imgChoice = prompt(
+        "Invalid choice. Please enter a valid image name (image1, image2, image3): ",
+      );
+    }
+
+    do {
+      imageBorderPixels = prompt(
+        "Enter border thickness in pixels (5 for 5px): ",
+      );
+    } while (isNaN(imageBorderPixels) || imageBorderPixels === "");
+
+    do {
+      imageBorderColor = prompt("Enter border color (red, #FF0000): ");
+    } while (imageBorderColor === "" || imageBorderColor === null);
+
+    do {
+      imageBorderStyle = prompt("Enter border style (solid, dashed, dotted): ");
+    } while (imageBorderStyle === "" || imageBorderStyle === null);
+
+    document.write(
+      " <p style='text-align: center; color: " +
+        imageBorderColor +
+        "'> You have chosen: " +
+        imgChoice +
+        "</p>",
+    );
+
+    document.write(
+      "<div style='text-align: center'><img src='" +
+        imgChoice +
+        ".png' alt='" +
+        imgChoice +
+        "' style='border: " +
+        imageBorderPixels +
+        "px " +
+        imageBorderStyle +
+        " " +
+        imageBorderColor +
+        ";'></div>",
+    );
+  </script>
+
+  <body></body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do {
+        var num1 = prompt("Enter first number: ");
+      } while (isNaN(num1) || num1 === "" || num1 === null);
+
+      do {
+        var num2 = prompt("Enter second number: ");
+      } while (isNaN(num2) || num2 === "" || num2 === null);
+      do {
+        var num3 = prompt("Enter third number: ");
+      } while (isNaN(num3) || num3 === "");
+
+      var arr = [num1, num2, num3];
+
+      alert(
+        "You have entered 3 numbers. Check the heading tag for operations result.",
+      );
+      document.write("<h1>Adding -- Multiplication -- Subtraction</h1> <hr>");
+      var addition = Number(num1) + Number(num2) + Number(num3);
+
+      var multiplication = Number(num1) * Number(num2) * Number(num3);
+
+      var subtraction = Number(num1) - Number(num2) - Number(num3);
+
+      document.write("<h2 style='color: red'> Addition: " + addition + "</h2>");
+      document.write(
+        "<h2 style='color: red'> Multiplication: " + multiplication + "</h2>",
+      );
+      document.write(
+        "<h2 style='color: red'> Subtraction: " + subtraction + "</h2>",
+      );
+
+      if (num1 == 0 || num2 == 0 || num3 == 0) {
+        document.write(
+          "<h2 style='color: red'> Division: Division by zero is not allowed</h2>",
+        );
+      } else {
+        var division = Number(num1) / Number(num2) / Number(num3);
+        document.write(
+          "<h2 style='color: red'> Division: " + division + "</h2>",
+        );
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

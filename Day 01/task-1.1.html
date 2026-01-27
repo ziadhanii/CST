@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do{
+              var text = prompt("Enter text to show it in header tag from h1 to h6 ");
+
+      }while(isNan(text)|| text= "" , text ==null)
+      document.write("<h1> Heading </h1> <hr>");
+      for (var i = 1; i <= 6; i++) {
+        document.write("<h" + i + ">" + text + "</h" + i + ">");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

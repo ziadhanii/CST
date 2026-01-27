@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      alert(
+        "Enter numbers to calculate the sum ------ stop at 0 or when sum exceeds 100",
+      );
+
+      var sum = 0;
+      var count = 1;
+      var input, num;
+
+      do {
+        input = prompt("Enter number " + count + ":");
+
+        if (input === "" || input === null) {
+          alert("Please enter a number");
+          continue;
+        }
+
+        num = Number(input);
+
+        if (isNaN(num)) {
+          alert("Please enter a valid number");
+          continue;
+        }
+
+        sum += num;
+        count++;
+      } while (num !== 0 && sum <= 100);
+
+      document.write("<h1>Total Sum = " + sum + "</h1>");
+    </script>
+  </head>
+  <body></body>
+</html>

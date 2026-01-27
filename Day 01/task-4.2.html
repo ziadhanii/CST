@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      do {
+        var number = prompt("Enter Number:");
+      } while (isNaN(number) || number === "" || Number(number) < 0);
+
+      var locales = ["en-US", "de-DE", "ar-EG", "ja-JP", "hi-IN"];
+      document.write(
+        "<h1 style='text-align: center'>Number in Different Locales</h1><hr>",
+      );
+
+      for (var i = 0; i < locales.length; i++) {
+        var formattedNumber = Number(number).toLocaleString(locales[i]);
+
+        document.write(
+          "<h2 style='color: blue; text-align: center;'>" +
+            locales[i] +
+            ": " +
+            formattedNumber +
+            "</h2>",
+        );
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

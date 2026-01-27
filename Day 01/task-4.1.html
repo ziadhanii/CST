@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      alert("Convert a number from one radix (base) to another (2-36).");
+
+      do {
+        var number = prompt("Enter Number:");
+      } while (isNaN(number) || number === "" || number === null);
+
+      do {
+        var initialRadix = prompt("Enter Initial Radix (2-36):");
+        initialRadix = parseInt(initialRadix);
+      } while (isNaN(initialRadix) || initialRadix < 2 || initialRadix > 36);
+
+      do {
+        var targetRadix = prompt("Enter Target Radix (2-36):");
+        targetRadix = parseInt(targetRadix);
+      } while (isNaN(targetRadix) || targetRadix < 2 || targetRadix > 36);
+
+      var decimalNumber = parseInt(number, initialRadix);
+
+      var convertedNumber = decimalNumber.toString(targetRadix);
+
+      alert("Converted Number is: " + convertedNumber);
+
+      document.write(
+        "<h1 style='text-align: center'>Number Conversion</h1>" +
+          "<div style='font-size: 20px; margin-top: 20px;'>" +
+          "<p><strong>Input Number:</strong> " +
+          number +
+          "</p>" +
+          "<p><strong>Initial Radix:</strong> " +
+          initialRadix +
+          "</p>" +
+          "<p><strong>Target Radix:</strong> " +
+          targetRadix +
+          "</p>" +
+          "<p><strong>Decimal Value:</strong> " +
+          decimalNumber +
+          "</p>" +
+          "<h2 style='color: green;'>Result: " +
+          convertedNumber +
+          "</h2>" +
+          "</div>",
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

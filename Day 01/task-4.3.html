@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var arr = [5000, 20, 34, 33];
+
+      var maxLength = 0;
+      var maxIndex = 0;
+      var isEqualNumbers = true;
+
+      for (var i = 0; i < arr.length; i++) {
+        var currentLength = arr[i].toString().length;
+        if (currentLength > maxLength) {
+          maxLength = currentLength;
+          maxIndex = i;
+        }
+      }
+
+      for (var i = 0; i < arr.length - 1; i++) {
+        var currentLength = arr[i].toString().length;
+        var nextLength = arr[i + 1].toString().length;
+        if (currentLength != nextLength) {
+          isEqualNumbers = false;
+          break;
+        }
+      }
+
+      if (isEqualNumbers) {
+        for (var i = 0; i < arr.length; i++) {
+          document.write("<p>" + arr[i] + "</p>");
+        }
+      } else {
+        if (arr[maxIndex].toString().includes("."))
+          for (var i = 0; i < arr.length; i++) {
+            var currentLength = arr[i].toString().length;
+            document.write("<p>" + arr[i].toPrecision(maxLength) + "</p>");
+          }
+        else {
+          for (var i = 0; i < arr.length; i++) {
+            var currentLength = arr[i].toString().length;
+            document.write("<p>" + arr[i].toPrecision(maxLength + 1) + "</p>");
+          }
+        }
+      }
+    </script>
+
+    <!-- <script>
+      var arr = [10.2, 20, 34, 333.12345];
+
+      var maxLength = 0;
+
+      for (var i = 0; i < arr.length; i++) {
+        var digitsCount = arr[i].toString().replace(".", "").length;
+
+        if (digitsCount > maxLength) {
+          maxLength = digitsCount;
+        }
+      }
+
+      for (var i = 0; i < arr.length; i++) {
+        document.write(arr[i].toPrecision(maxLength) + "<br>");
+      }
+    </script> -->
+    <!-- <script>
+      var num1 = prompt("Enter first number: ");
+      var num2 = prompt("Enter second number: ");
+      var num3 = prompt("Enter third number: ");
+      var num4 = prompt("Enter fourth number: ");
+
+      var arr = [num1, num2, num3, num4];
+
+      document.write("<h1>Numbers with same length</h1><hr>");
+
+      var maxDecimals = 0;
+
+      for (var i = 0; i < arr.length; i++) {
+        var numStr = arr[i].toString();
+
+        if (numStr.indexOf(".") !== -1) {
+          var decimals = numStr.split(".")[1].length;
+          if (decimals > maxDecimals) {
+            maxDecimals = decimals;
+          }
+        }
+      }
+
+      for (var j = 0; j < arr.length; j++) {
+        var number = Number(arr[j]);
+        var formattedNumber = number.toFixed(maxDecimals);
+
+        document.write("<h2>Number: " + formattedNumber + "</h2>");
+      }
+    </script> -->
+  </head>
+  <body></body>
+</html>
