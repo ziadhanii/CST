@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parent</title>
-    <script src="task3.js"></script>
+    <script>
+      var childWin = null;
+      var timeoutId = null;
+
+      function openWindow() {
+        if (childWin && !childWin.closed) return;
+
+        childWin = window.open("child.html", "", "width=400,height=300");
+
+        childWin.addEventListener("load", function () {
+          var doc = childWin.document.documentElement;
+
+          if (doc.scrollTop + doc.clientHeight >= doc.scrollHeight) {
+            closeWindow();
+          }
+          scrollAd();
+        });
+      }
+
+      function scrollAd() {
+        if (!childWin || childWin.closed) return;
+
+        childWin.scrollBy(0, 2);
+
+        timeoutId = setTimeout(scrollAd, 50);
+      }
+
+      function closeWindow() {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+
+        if (childWin && !childWin.closed) {
+          childWin.close();
+        }
+
+        childWin = null;
+      }
+    </script>
   </head>
   <body>
     <h1>hello from parent</h1>

@@ -1,0 +1,52 @@
+body {
+    background: #fff;
+}
+
+.container {
+    width: 600px;
+    margin: 60px auto;
+    padding: 25px;
+    background: #e5e5e5;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.text {
+    width: 250px;
+    padding: 6px;
+}
+
+button {
+    padding: 6px 20px;
+    cursor: pointer;
+}
+
+#newsList {
+    margin-top: 20px;
+    padding: 0;
+}
+
+#newsList li {
+    list-style: none;
+    padding: 8px;
+    margin-bottom: 6px;
+}
+
+.sport {
+    background: #2ecc71;
+}
+
+.social {
+    background: #3498db;
+}
+
+.politic {
+    background: #e74c3c;
+}

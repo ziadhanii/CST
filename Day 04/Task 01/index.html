@@ -5,13 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>News Table</title>
-  </head>
+    <style>
+      div {
+        max-width: 600px;
+        margin: 20px auto;
+      }
 
+      input {
+        padding: 6px;
+        width: 70%;
+      }
+
+      button {
+        padding: 6px 10px;
+        cursor: pointer;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 15px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #2196f3;
+        color: white;
+      }
+      #countRowsBtn {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
   <body>
-    <div class="card">
+    <div>
       <h2>News Manager</h2>
 
-      <div class="input-group">
+      <div>
         <input type="text" id="newsInput" placeholder="Enter news" />
         <button id="addBtn">Add</button>
       </div>
@@ -37,7 +72,10 @@
       var tbody = document.getElementById("newsBody");
 
       addBtn.addEventListener("click", function () {
-        if (!newsInput.value.trim()) return;
+        if (!newsInput.value.trim()) {
+          alert("Please enter news");
+          return;
+        }
 
         var row = document.createElement("tr");
 

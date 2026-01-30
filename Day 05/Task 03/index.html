@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      display: inline-block;
+      border: 2px solid black;
+      width: 130px;
+      padding: 10px;
+    }
+
+    .font-Arial {
+      font-family: Arial, sans-serif;
+    }
+
+    .font-Courier {
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .font-Georgia {
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    .font-Times {
+      font-family: "Times New Roman", serif;
+    }
+
+    .font-Impact {
+      font-family: Impact, sans-serif;
+    }
+
+    .font-Verdana {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .lineHeight-normal {
+      line-height: normal;
+    }
+
+    .lineHeight-10px {
+      line-height: 10px;
+    }
+
+    .lineHeight-15px {
+      line-height: 15px;
+    }
+
+    .lineHeight-1-5px {
+      line-height: 1.5px;
+    }
+
+    .letterSpacing-normal {
+      letter-spacing: normal;
+    }
+
+    .letterSpacing-1px {
+      letter-spacing: 1px;
+    }
+
+    .letterSpacing-2px {
+      letter-spacing: 2px;
+    }
+
+    .letterSpacing-3px {
+      letter-spacing: 3px;
+    }
+
+    .Text-indent-0px {
+      text-indent: 0px;
+    }
+
+    .Text-indent-5px {
+      text-indent: 5px;
+    }
+
+    .Text-indent-15px {
+      text-indent: 15px;
+    }
+
+    .Text-indent-25px {
+      text-indent: 25px;
+    }
+
+    .Text-Transform-none {
+      text-transform: none;
+    }
+
+    .Text-Transform-capitalize {
+      text-transform: capitalize;
+    }
+
+    .Text-Transform-uppercase {
+      text-transform: uppercase;
+    }
+
+    .Text-Transform-lowercase {
+      text-transform: lowercase;
+    }
+
+    .dec-underline {
+      text-decoration: underline;
+    }
+
+    .dec-line {
+      text-decoration: line-through;
+    }
+
+    .dec-overline {
+      text-decoration: overline;
+    }
+
+    .dec-none {
+      text-decoration: none;
+    }
+
+    .Text-border-none {
+      border: 1px none;
+    }
+
+    .Text-border-dotted {
+      border: 1px dotted;
+    }
+
+    .Text-border-double {
+      border-style: double;
+    }
+
+    .Text-border-groove {
+      border-style: groove;
+    }
+
+    .Text-border-dashed {
+      border-style: dashed;
+    }
+
+    .Text-border-solid {
+      border-style: solid;
+    }
+
+    .Text-border-outset {
+      border-style: outset;
+    }
+
+    .Text-border-ridge {
+      border-style: ridge;
+    }
+
+    .Border-color-none {
+      border-color: transparent;
+    }
+
+    .Border-color-pink {
+      border-color: pink;
+    }
+
+    .Border-color-red {
+      border-color: red;
+    }
+
+    .Border-color-green {
+      border-color: green;
+    }
+
+    .Border-color-blue {
+      border-color: blue;
+    }
+
+    .Border-color-yellow {
+      border-color: yellow;
+    }
+
+    .Border-color-purple {
+      border-color: purple;
+    }
+  </style>
+
+  <body>
+    <p id="text">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos doloribus .
+      <br />
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam quibusdam .
+    </p>
+
+    <div>
+      <strong>FontFamily</strong><br />
+      <input type="radio" name="FontFamily" value="font-Arial" checked /> Arial
+      <br />
+      <input type="radio" name="FontFamily" value="font-Courier" /> Courier
+      <br />
+      <input type="radio" name="FontFamily" value="font-Georgia" /> Georgia
+      <br />
+
+      <input type="radio" name="FontFamily" value="font-Impact" /> Impact
+
+      <br />
+      <input type="radio" name="FontFamily" value="font-Times" /> Times
+      <br />
+      <input type="radio" name="FontFamily" value="font-Verdana" /> Verdana
+    </div>
+
+    <div>
+      <strong>TextAlign</strong><br />
+      <input type="radio" name="Align" value="text-left" checked /> Left
+      <br />
+      <input type="radio" name="Align" value="text-center" /> Center
+      <br />
+      <input type="radio" name="Align" value="text-right" /> Right
+      <br />
+    </div>
+
+    <div>
+      <strong>LineHeight</strong><br />
+      <input type="radio" name="LineHeight" value="lineHeight-normal" checked />
+      normal <br /><input
+        type="radio"
+        name="LineHeight"
+        value="lineHeight-10px"
+      />
+      10px <br /><input
+        type="radio"
+        name="LineHeight"
+        value="lineHeight-15px"
+      />
+      15px <br /><input
+        type="radio"
+        name="LineHeight"
+        value="lineHeight-1-5px"
+      />
+      1.5px
+      <br />
+    </div>
+    <div>
+      <strong>LetterSpacing</strong><br />
+      <input
+        type="radio"
+        name="LetterSpacing"
+        value="letterSpacing-normal"
+        checked
+      />
+      normal <br /><input
+        type="radio"
+        name="LetterSpacing"
+        value="letterSpacing-1px"
+      />
+      1px <br /><input
+        type="radio"
+        name="LetterSpacing"
+        value="letterSpacing-2px"
+      />
+      2px <br /><input
+        type="radio"
+        name="LetterSpacing"
+        value="letterSpacing-3px"
+      />
+      3px
+      <br />
+    </div>
+
+    <div>
+      <strong>TextIndent</strong><br />
+      <input type="radio" name="TextIndent" value="Text-indent-0px" checked />
+      0px <br /><input type="radio" name="TextIndent" value="Text-indent-5px" />
+      5px <br /><input
+        type="radio"
+        name="TextIndent"
+        value="Text-indent-15px"
+      />
+      15px <br /><input
+        type="radio"
+        name="TextIndent"
+        value="Text-indent-25px"
+      />
+      25px
+      <br />
+    </div>
+    <div>
+      <strong>TextTransform</strong><br />
+      <input
+        type="radio"
+        name="TextIndent"
+        value="Text-Transform-none"
+        checked
+      />
+      none <br /><input
+        type="radio"
+        name="TextIndent"
+        value="Text-Transform-capitalize"
+      />
+      capitalize <br /><input
+        type="radio"
+        name="TextIndent"
+        value="Text-Transform-uppercase"
+      />
+      uppercase <br /><input
+        type="radio"
+        name="TextIndent"
+        value="Text-Transform-lowercase"
+      />
+      lowercase
+      <br />
+    </div>
+
+    <div>
+      <strong>TextDecoration</strong><br />
+      <input type="radio" name="Decoration" value="dec-none" checked /> None
+      <br /><input type="radio" name="Decoration" value="dec-underline" />
+      Underline <br /><input
+        type="radio"
+        name="Decoration"
+        value="dec-overline"
+      />
+      Overline <br /><input type="radio" name="Decoration" value="dec-line" />
+      Line-through
+      <br />
+    </div>
+
+    <div>
+      <strong>TextBorder</strong><br />
+      <input type="radio" name="TextBorder" value="Text-border-none" checked />
+      None <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-dotted"
+      />
+      dotted <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-double"
+      />
+      double <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-groove"
+      />
+      groove <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-dashed"
+      />
+      dashed <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-solid"
+      />
+      solid <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-outset"
+      />
+      outset <br /><input
+        type="radio"
+        name="TextBorder"
+        value="Text-border-ridge"
+      />ridge
+      <br />
+    </div>
+    <div>
+      <strong>BorderColor</strong><br />
+      <input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-none"
+        checked
+      />
+      None <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-pink"
+      />
+      pink <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-red"
+      />
+      red <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-green"
+      />
+      green <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-blue"
+      />
+      blue <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-yellow"
+      />
+      yellow <br /><input
+        type="radio"
+        name="BorderColor"
+        value="Border-color-purple"
+      />
+      purple
+      <br />
+    </div>
+
+    <script>
+      var text = document.getElementById("text");
+
+      function handleRadioGroup(name) {
+        var radios = document.querySelectorAll(`input[name="${name}"]`);
+
+        radios.forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            radios.forEach((r) => text.classList.remove(r.value));
+            text.classList.add(radio.value);
+          });
+        });
+      }
+
+      handleRadioGroup("FontFamily");
+      handleRadioGroup("Align");
+      handleRadioGroup("LineHeight");
+      handleRadioGroup("LetterSpacing");
+      handleRadioGroup("TextIndent");
+      handleRadioGroup("Decoration");
+      handleRadioGroup("TextBorder");
+      handleRadioGroup("BorderColor");
+    </script>
+  </body>
+</html>
