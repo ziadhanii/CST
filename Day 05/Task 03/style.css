@@ -1,0 +1,200 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+#text {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 600px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.controls>div {
+    border: 2px solid black;
+    width: 130px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.font-Arial {
+    font-family: Arial;
+}
+
+.font-Courier {
+    font-family: "Courier New";
+}
+
+.font-Georgia {
+    font-family: Georgia;
+}
+
+.font-Times {
+    font-family: "Times New Roman";
+}
+
+.font-Impact {
+    font-family: Impact;
+}
+
+.font-Verdana {
+    font-family: Verdana;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.lineHeight-normal {
+    line-height: normal;
+}
+
+.lineHeight-10px {
+    line-height: 10px;
+}
+
+.lineHeight-15px {
+    line-height: 15px;
+}
+
+.lineHeight-1-5 {
+    line-height: 1.5;
+}
+
+.letterSpacing-normal {
+    letter-spacing: normal;
+}
+
+.letterSpacing-1px {
+    letter-spacing: 1px;
+}
+
+.letterSpacing-2px {
+    letter-spacing: 2px;
+}
+
+.letterSpacing-3px {
+    letter-spacing: 3px;
+}
+
+.indent-0 {
+    text-indent: 0;
+}
+
+.indent-5 {
+    text-indent: 5px;
+}
+
+.indent-15 {
+    text-indent: 15px;
+}
+
+.indent-25 {
+    text-indent: 25px;
+}
+
+.transform-none {
+    text-transform: none;
+}
+
+.transform-capitalize {
+    text-transform: capitalize;
+}
+
+.transform-uppercase {
+    text-transform: uppercase;
+}
+
+.transform-lowercase {
+    text-transform: lowercase;
+}
+
+.dec-none {
+    text-decoration: none;
+}
+
+.dec-underline {
+    text-decoration: underline;
+}
+
+.dec-overline {
+    text-decoration: overline;
+}
+
+.dec-line {
+    text-decoration: line-through;
+}
+
+.border-none {
+    border: none;
+}
+
+.border-dotted {
+    border: 2px dotted;
+}
+
+.border-double {
+    border: 2px double;
+}
+
+.border-groove {
+    border: 2px groove;
+}
+
+.border-dashed {
+    border: 2px dashed;
+}
+
+.border-solid {
+    border: 2px solid;
+}
+
+.border-outset {
+    border: 2px outset;
+}
+
+.border-ridge {
+    border: 2px ridge;
+}
+
+.color-none {
+    border-color: transparent;
+}
+
+.color-red {
+    border-color: red;
+}
+
+.color-green {
+    border-color: green;
+}
+
+.color-blue {
+    border-color: blue;
+}
+
+.color-yellow {
+    border-color: yellow;
+}
+
+.color-purple {
+    border-color: purple;
+}
+
+.color-pink {
+    border-color: pink;
+}
