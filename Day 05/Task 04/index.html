@@ -33,8 +33,8 @@
       }
 
       th {
-        background-color: #2196f3;
         color: white;
+        background-color: red;
       }
 
       .done {
@@ -91,6 +91,17 @@
         if (value === "") {
           alert("Please enter a task");
           return;
+        }
+
+        var rows = tbody.querySelectorAll("tr");
+
+        for (var i = 0; i < rows.length; i++) {
+          var taskText = rows[i].children[1].innerText;
+
+          if (taskText.toLowerCase() === value.toLowerCase()) {
+            alert("Task already exists");
+            return;
+          }
         }
 
         var tr = document.createElement("tr");

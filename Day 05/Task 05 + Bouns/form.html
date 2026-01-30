@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Document</title>
+
+    <style>
+      .container {
+        width: 400px;
+        margin: 40px auto;
+      }
+
+      .row {
+        margin-bottom: 12px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 6px;
+      }
+
+      button {
+        padding: 6px 12px;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+
+      .errorBox {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Employee Form</h2>
+
+      <div class="row">ID: <input id="id" readonly /></div>
+      <div class="row">Name: <input id="name" /></div>
+
+      <div class="row">
+        Position:
+        <select id="position">
+          <option value="">Select Position</option>
+          <option>Back End Developer</option>
+          <option>Front End Developer</option>
+          <option>Full Stack Developer</option>
+          <option>DevOps</option>
+          <option>Tester</option>
+          <option>Manager</option>
+          <option>HR</option>
+        </select>
+      </div>
+
+      <div class="row">Salary: <input id="salary" type="number" min="1" /></div>
+
+      <div class="row">
+        <button id="saveBtn">Save</button>
+        <button id="cancelBtn">Cancel</button>
+      </div>
+
+      <div class="errorBox" id="errorBox"></div>
+    </div>
+
+    <script>
+      function Employee(id, name, position, salary) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.salary = salary;
+      }
+
+      function saveToCookie(data) {
+        document.cookie = "employees=" + JSON.stringify(data);
+      }
+
+      function getFromCookie() {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var c = cookies[i].trim();
+
+          if (c.indexOf("employees=") === 0) {
+            return JSON.parse(c.substring(10));
+          }
+        }
+
+        return [];
+      }
+
+      var employees = getFromCookie();
+
+      var idInput = document.getElementById("id");
+      var nameInput = document.getElementById("name");
+      var positionInput = document.getElementById("position");
+      var salaryInput = document.getElementById("salary");
+
+      var saveBtn = document.getElementById("saveBtn");
+      var cancelBtn = document.getElementById("cancelBtn");
+      var errorBox = document.getElementById("errorBox");
+
+      var query = window.location.search;
+      var editIndex = null;
+
+      if (query.indexOf("edit=") !== -1)
+        editIndex = Number(query.split("=")[1]);
+
+      if (editIndex !== null) {
+        var emp = employees[editIndex];
+
+        idInput.value = emp.id;
+        nameInput.value = emp.name;
+        positionInput.value = emp.position;
+        salaryInput.value = emp.salary;
+      } else {
+        var maxId = 0;
+
+        for (var i = 0; i < employees.length; i++)
+          if (employees[i].id > maxId) maxId = employees[i].id;
+
+        idInput.value = maxId + 1;
+      }
+
+      function saveEmployee() {
+        errorBox.textContent = "";
+
+        var name = nameInput.value.trim();
+        var position = positionInput.value;
+        var salary = salaryInput.value.trim();
+
+        if (name === "") {
+          errorBox.textContent = "Name is required";
+          return;
+        }
+
+        if (position === "") {
+          errorBox.textContent = "Select position";
+          return;
+        }
+
+        if (salary === "" || isNaN(salary) || salary <= 0) {
+          errorBox.textContent = "Salary must be positive number";
+          return;
+        }
+
+        var employee = new Employee(
+          Number(idInput.value),
+          name,
+          position,
+          Number(salary),
+        );
+
+        if (editIndex !== null) employees[editIndex] = employee;
+        else employees.push(employee);
+
+        saveToCookie(employees);
+
+        goBack();
+      }
+
+      function goBack() {
+        window.location.href = "index.html";
+      }
+
+      saveBtn.addEventListener("click", saveEmployee);
+      cancelBtn.addEventListener("click", goBack);
+    </script>
+  </body>
+</html>

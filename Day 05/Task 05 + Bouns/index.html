@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Document</title>
+
+    <style>
+      .container {
+        width: 700px;
+        margin: 40px auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        border: 1px solid #000;
+      }
+
+      button {
+        padding: 5px 10px;
+        margin: 10px 0;
+        cursor: pointer;
+      }
+      .btn-update {
+        border: none;
+        margin-right: 10px;
+        border-radius: 5px;
+        background-color: #749ef9;
+      }
+      .btn-delete {
+        border: none;
+        border-radius: 5px;
+        background-color: #fb786e;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Employee Management</h2>
+
+      <button id="addBtn">Add Employee</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="empBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function getFromCookie() {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var c = cookies[i].trim();
+
+          if (c.indexOf("employees=") === 0) return JSON.parse(c.split("=")[1]);
+        }
+
+        return [];
+      }
+
+      function saveToCookie(data) {
+        document.cookie = "employees=" + JSON.stringify(data);
+      }
+
+      var employees = getFromCookie();
+      var tbody = document.getElementById("empBody");
+      var addBtn = document.getElementById("addBtn");
+
+      function render() {
+        tbody.innerHTML = "";
+
+        for (var i = 0; i < employees.length; i++) {
+          var tr = document.createElement("tr");
+
+          addCell(tr, employees[i].id);
+          addCell(tr, employees[i].name);
+          addCell(tr, employees[i].position);
+          addCell(tr, employees[i].salary);
+
+          var actions = document.createElement("td");
+
+          var updateBtn = document.createElement("button");
+          updateBtn.className = "btn-update";
+          updateBtn.textContent = "Update";
+          updateBtn.dataset.index = i;
+
+          var deleteBtn = document.createElement("button");
+          deleteBtn.className = "btn-delete";
+          deleteBtn.textContent = "Delete";
+          deleteBtn.dataset.index = i;
+
+          actions.appendChild(updateBtn);
+          actions.appendChild(deleteBtn);
+
+          tr.appendChild(actions);
+
+          tbody.appendChild(tr);
+        }
+      }
+
+      function addCell(tr, text) {
+        var td = document.createElement("td");
+        td.textContent = text;
+        tr.appendChild(td);
+      }
+
+      addBtn.addEventListener("click", function () {
+        window.location.href = "form.html";
+      });
+
+      tbody.addEventListener("click", function (e) {
+        var index = e.target.dataset.index;
+
+        if (index === undefined) return;
+
+        if (e.target.textContent === "Update")
+          window.location.href = "form.html?edit=" + index;
+
+        if (e.target.textContent === "Delete") {
+          if (!confirm("Delete this employee?")) return;
+
+          employees.splice(index, 1);
+
+          saveToCookie(employees);
+
+          render();
+        }
+      });
+
+      render();
+    </script>
+  </body>
+</html>
