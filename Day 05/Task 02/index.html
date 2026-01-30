@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" />
+      </div>
+
+      <div>
+        <label for="country">Country:</label>
+        <select id="country">
+          <option disabled selected>Select Country</option>
+          <option>Egypt</option>
+          <option>Qatar</option>
+          <option>Kuwait</option>
+          <option>Bahrain</option>
+          <option>Oman</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="zipCode">Zip Code:</label>
+        <input type="text" id="zipCode" readonly />
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Enter your email" />
+      </div>
+
+      <div>
+        <label>Hobbies:</label>
+        <input type="checkbox" class="hobby" /> Writing
+        <input type="checkbox" class="hobby" /> Reading
+        <input type="checkbox" class="hobby" /> Swimming
+        <input type="checkbox" class="hobby" /> Sleeping
+      </div>
+
+      <div>
+        <input type="button" value="Register" id="registerBtn" />
+        <input type="button" value="Clear" id="clearBtn" />
+      </div>
+
+      <div class="errors"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var fullNameInput = document.getElementById("fullName");
+        var countrySelect = document.getElementById("country");
+        var zipCodeInput = document.getElementById("zipCode");
+        var emailInput = document.getElementById("email");
+
+        var registerBtn = document.getElementById("registerBtn");
+        var clearBtn = document.getElementById("clearBtn");
+
+        var hobbies = document.querySelectorAll(".hobby");
+        var errorBox = document.querySelector(".errors");
+
+        fullNameInput.focus();
+
+        fullNameInput.addEventListener("blur", function () {
+          if (this.value.trim() === "") {
+            errorBox.textContent = "Full name is required";
+            this.focus();
+          } else {
+            errorBox.textContent = "";
+          }
+        });
+
+        var zipMap = {
+          Egypt: "10001",
+          Qatar: "50001",
+          Kuwait: "60001",
+          Bahrain: "70001",
+          Oman: "80001",
+        };
+
+        countrySelect.addEventListener("change", function () {
+          zipCodeInput.value = zipMap[this.value] || "";
+        });
+
+        emailInput.addEventListener("blur", function () {
+          var emailRegex =
+            /^[a-zA-Z0-9._%+-]+@(gmail|hotmail|outlook|yahoo)\.(com|net)$/;
+
+          if (!emailRegex.test(this.value)) {
+            errorBox.textContent = "Invalid email format";
+          } else {
+            errorBox.textContent = "";
+          }
+        });
+
+        registerBtn.addEventListener("click", function () {
+          var name = fullNameInput.value.trim();
+
+          var email = emailInput.value;
+
+          var emailRegex =
+            /^[a-zA-Z0-9._%+-]+@(gmail|hotmail|outlook|yahoo)\.(com|net)$/;
+
+          var hobbySelected = Array.from(hobbies).some(function (h) {
+            return h.checked;
+          });
+
+          if (name === "") {
+            errorBox.textContent = "Full name is required";
+            fullNameInput.focus();
+            return;
+          }
+
+          if (
+            !countrySelect.value ||
+            countrySelect.value === "Select Country"
+          ) {
+            errorBox.textContent = "Select country first";
+            return;
+          }
+
+          if (!emailRegex.test(email)) {
+            errorBox.textContent = "Invalid email";
+            emailInput.focus();
+            return;
+          }
+
+          if (!hobbySelected) {
+            errorBox.textContent = "Select at least one hobby";
+            return;
+          }
+
+          errorBox.textContent = "";
+
+          window.location.href = "welcome.html";
+        });
+
+        clearBtn.addEventListener("click", function () {
+          if (confirm("Clear the form?")) {
+            document.querySelectorAll("input").forEach(function (e) {
+              if (e.type !== "button") e.value = "";
+              if (e.type === "checkbox") e.checked = false;
+            });
+
+            errorBox.textContent = "";
+            fullNameInput.focus();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

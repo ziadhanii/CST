@@ -1,0 +1,14 @@
+    .main {
+        width: 400px;
+        padding: 20px;
+        margin: 60px auto;
+        border: 3px solid black;
+    }
+
+    div {
+        margin-bottom: 10px;
+    }
+
+    .errors {
+        color: red;
+    }
